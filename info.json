@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "nombre": "Alfajor Jorgito Negro",
+        "categoria": "golosinas",
+        "stock": 30,
+        "precio": 180,
+        "rutaImagen": "jorgitonegro.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Alfajor Jorgito Blanco",
+        "categoria": "golosinas",
+        "stock": 30,
+        "precio": 180,
+        "rutaImagen": "jorgitoblanco.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Tutucas",
+        "categoria": "snack",
+        "stock": 25,
+        "precio": 200,
+        "rutaImagen": "tutucas.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Pico Dulce",
+        "categoria": "golosinas",
+        "stock": 50,
+        "precio": 150,
+        "rutaImagen": "picodulce.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Papas Fritas",
+        "categoria": "snack",
+        "stock": 25,
+        "precio": 350,
+        "rutaImagen": "papasfritas.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Palitos Salados",
+        "categoria": "snack",
+        "stock": 25,
+        "precio": 250,
+        "rutaImagen": "palitossalados.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Agua Mineral",
+        "categoria": "bebidas",
+        "stock": 30,
+        "precio": 300,
+        "rutaImagen": "aguamineral.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Jugo Baggio Multifruta",
+        "categoria": "bebidas",
+        "stock": 50,
+        "precio": 200,
+        "rutaImagen": "baggiomultifruta.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Jugo Baggio Naranja",
+        "categoria": "bebidas",
+        "stock": 50,
+        "precio": 200,
+        "rutaImagen": "baggionaranja.jpg"
+    }
+]
