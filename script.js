@@ -119,10 +119,11 @@ function agregarAlCarrito(idProducto) {
   if (productoExistente) {
     productoExistente.cantidad += 1;
     lanzarTostada(`Se agregó otro ${productoEncontrado.nombre} al carrito. Total: ${productoExistente.cantidad}`, 1500)
-      } else {
+    
+  } else {
     productoEncontrado.cantidad = 1;
     carritoDeCompras.push(productoEncontrado);
-    lanzarTostada(`Producto  ${productoEncontrado.nombre} agregado al carrito. Total: ${productoExistente.cantidad}`, 1500)
+    lanzarTostada(`Producto "${productoEncontrado.nombre}" agregado al carrito.`, 1500);
   }
 
   localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
