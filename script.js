@@ -118,13 +118,11 @@ function agregarAlCarrito(idProducto) {
 
   if (productoExistente) {
     productoExistente.cantidad += 1;
-    alert(
-      `Se agregó otro "${productoEncontrado.nombre}" al carrito. Total: ${productoExistente.cantidad}`
-    );
-  } else {
+    lanzarTostada(`Se agregó otro ${productoEncontrado.nombre} al carrito. Total: ${productoExistente.cantidad}`, 1500)
+      } else {
     productoEncontrado.cantidad = 1;
     carritoDeCompras.push(productoEncontrado);
-    alert(`Producto "${productoEncontrado.nombre}" agregado al carrito.`);
+    lanzarTostada(`Producto  ${productoEncontrado.nombre} agregado al carrito. Total: ${productoExistente.cantidad}`, 1500)
   }
 
   localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
@@ -182,4 +180,11 @@ function finalizarCompra() {
   setearCantidadProductos();
 
   alert("Fin de la compra. Valor: $" + total + ". Gracias por su compra.");
+}
+
+function lanzarTostada(text, duration) {
+  Toastify({
+    text,
+    duration
+  }).showToast();
 }
