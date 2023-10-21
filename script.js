@@ -1,3 +1,9 @@
+
+// fetch("./info.json")
+//   .then(respuesta => respuesta.json())
+//   .then(productos =>console.log(productos))
+
+
 let productos = [
   {
     id: 1,
@@ -76,10 +82,11 @@ let productos = [
 let carritoDeCompras = [];
 let carritoRecuperado = localStorage.getItem("carrito");
 
-if (carritoRecuperado) {
-  carritoDeCompras = JSON.parse(carritoRecuperado);
-  setearCantidadProductos();
+
+function principal(productos) { 
+
 }
+
 
 function setearCantidadProductos() {
   let cant = 0;
@@ -119,7 +126,7 @@ function agregarAlCarrito(idProducto) {
   if (productoExistente) {
     productoExistente.cantidad += 1;
     lanzarTostada(`Se agregó otro ${productoEncontrado.nombre} al carrito. Total: ${productoExistente.cantidad}`, 1500)
-    
+
   } else {
     productoEncontrado.cantidad = 1;
     carritoDeCompras.push(productoEncontrado);
@@ -160,7 +167,7 @@ function verCarrito() {
     document.getElementById("contenidoModal").innerHTML = mensaje;
     $("#modalCarrito").modal("show");
   } else {
-    alert("Agregar productos al carrito");
+    lanzarTostada(`Agregar productos al carrito`, 1500);
   }
 }
 
@@ -180,7 +187,7 @@ function finalizarCompra() {
   localStorage.removeItem("carrito");
   setearCantidadProductos();
 
-  alert("Fin de la compra. Valor: $" + total + ". Gracias por su compra.");
+  lanzarTostada("Fin de la compra. Valor: $" + total + ". Gracias por su compra.", 2000);
 }
 
 function lanzarTostada(text, duration) {
