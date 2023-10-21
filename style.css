@@ -7,7 +7,7 @@ header {
 
 .logo {
   font-size: 44px;
-  background: linear-gradient(to right, #8b4513, #ffa500);
+  background: linear-gradient(to right, #669cda, #00e1ff);
   background-clip: inherit;
   -webkit-background-clip: text;
   color: transparent;
@@ -15,14 +15,14 @@ header {
 }
 
 .btn-orange {
-  background-color: #8b4513;
-  border-color: #8b4513;
+  background-color: #669cda;
+  border-color: #3e82cf;
   color: #fff;
 }
 
 .btn-orange:hover {
-  background-color: #622a02;
-  border-color: #622a02;
+  background-color: #3e85d6;
+  border-color: #396699;
   color: #fff;
 }
 
@@ -44,15 +44,18 @@ main {
   align-items: center;
   width: 350px;
   height: 350px;
-  border: 2px solid #8b4513;
+  border: 2px solid #3e82cf;
   border-radius: 10px;
   margin: 2px;
   padding: 15px 0px;
-  background-color: #fff;
+  background-color: #f1ece8;
+}
+.tarjeta:hover {
+  transform: translateY(-10px); 
 }
 
 .tarjeta h3 {
-  color: #8b4513;
+  color: #2963ce;
 }
 
 .footer {
