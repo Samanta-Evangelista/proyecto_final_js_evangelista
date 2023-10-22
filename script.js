@@ -35,6 +35,11 @@ function cargarPagina(productos) {
 let carritoDeCompras = [];
 let carritoRecuperado = localStorage.getItem("carrito");
 
+if (carritoRecuperado) {
+  carritoDeCompras = JSON.parse(carritoRecuperado);
+  setearCantidadProductos();
+}
+
 function setearCantidadProductos() {
   let cant = 0;
   carritoDeCompras.forEach(function (producto) {
