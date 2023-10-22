@@ -50,9 +50,6 @@ main {
   padding: 15px 0px;
   background-color: #f1ece8;
 }
-.tarjeta:hover {
-  transform: translateY(-10px); 
-}
 
 .tarjeta h3 {
   color: #2963ce;

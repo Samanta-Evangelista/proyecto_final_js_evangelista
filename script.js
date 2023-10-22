@@ -1,92 +1,39 @@
+let productos;
 
-// fetch("./info.json")
-//   .then(respuesta => respuesta.json())
-//   .then(productos =>console.log(productos))
+fetch("./info.json")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Error al cargar el archivo JSON");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    productos = data;
+    this.cargarPagina(data);
+  })
+  .catch((error) => {
+    console.error("Hubo un error: " + error);
+  });
 
+let contenedorProductos = document.getElementById("contenedorProductos");
 
-let productos = [
-  {
-    id: 1,
-    nombre: "Alfajor Jorgito Negro",
-    categoria: "golosinas",
-    stock: 30,
-    precio: 180,
-    rutaImagen: "jorgitonegro.jpg",
-  },
-  {
-    id: 2,
-    nombre: "Alfajor Jorgito Blanco",
-    categoria: "golosinas",
-    stock: 30,
-    precio: 180,
-    rutaImagen: "jorgitoblanco.jpg",
-  },
-  {
-    id: 3,
-    nombre: "Tutucas",
-    categoria: "snack",
-    stock: 25,
-    precio: 200,
-    rutaImagen: "tutucas.jpg",
-  },
-  {
-    id: 4,
-    nombre: "Pico Dulce",
-    categoria: "golosinas",
-    stock: 50,
-    precio: 150,
-    rutaImagen: "picodulce.jpg",
-  },
-  {
-    id: 5,
-    nombre: "Papas Fritas",
-    categoria: "snack",
-    stock: 25,
-    precio: 350,
-    rutaImagen: "papasfritas.jpg",
-  },
-  {
-    id: 6,
-    nombre: "Palitos Salados",
-    categoria: "snack",
-    stock: 25,
-    precio: 250,
-    rutaImagen: "palitossalados.jpg",
-  },
-  {
-    id: 7,
-    nombre: "Agua Mineral",
-    categoria: "bebidas",
-    stock: 30,
-    precio: 300,
-    rutaImagen: "aguamineral.jpg",
-  },
-  {
-    id: 8,
-    nombre: "Jugo Baggio Multifruta",
-    categoria: "bebidas",
-    stock: 50,
-    precio: 200,
-    rutaImagen: "baggiomultifruta.jpg",
-  },
-  {
-    id: 9,
-    nombre: "Jugo Baggio Naranja",
-    categoria: "bebidas",
-    stock: 50,
-    precio: 200,
-    rutaImagen: "baggionaranja.jpg",
-  },
-];
+function cargarPagina(productos) {
+  productos.forEach((producto) => {
+    let tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta";
+
+    tarjeta.innerHTML = `
+        <h3>${producto.nombre}</h3>    
+        <img src="./imagenes/${producto.rutaImagen}">
+        <p><strong>$${producto.precio}</strong></p>
+        <button class="btn btn-orange" onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+        `;
+    contenedorProductos.appendChild(tarjeta);
+  });
+}
 
 let carritoDeCompras = [];
 let carritoRecuperado = localStorage.getItem("carrito");
-
-
-function principal(productos) { 
-
-}
-
 
 function setearCantidadProductos() {
   let cant = 0;
@@ -101,21 +48,6 @@ function setearCantidadProductos() {
   }
 }
 
-let contenedor = document.getElementById("contenedorProductos");
-
-productos.forEach((producto) => {
-  let tarjeta = document.createElement("div");
-  tarjeta.className = "tarjeta";
-
-  tarjeta.innerHTML = `
-    <h3>${producto.nombre}</h3>    
-    <img src="./imagenes/${producto.rutaImagen}">
-    <p><strong>$${producto.precio}</strong></p>
-    <button class="btn btn-orange" onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
-    `;
-  contenedor.appendChild(tarjeta);
-});
-
 function agregarAlCarrito(idProducto) {
   const productoEncontrado = buscarProductoPorId(idProducto);
 
@@ -125,12 +57,17 @@ function agregarAlCarrito(idProducto) {
 
   if (productoExistente) {
     productoExistente.cantidad += 1;
-    lanzarTostada(`Se agregó otro ${productoEncontrado.nombre} al carrito. Total: ${productoExistente.cantidad}`, 1500)
-
+    lanzarTostada(
+      `Se agregó otro ${productoEncontrado.nombre} al carrito. Total: ${productoExistente.cantidad}`,
+      1500
+    );
   } else {
     productoEncontrado.cantidad = 1;
     carritoDeCompras.push(productoEncontrado);
-    lanzarTostada(`Producto "${productoEncontrado.nombre}" agregado al carrito.`, 1500);
+    lanzarTostada(
+      `Producto "${productoEncontrado.nombre}" agregado al carrito.`,
+      1500
+    );
   }
 
   localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
@@ -187,12 +124,12 @@ function finalizarCompra() {
   localStorage.removeItem("carrito");
   setearCantidadProductos();
 
-  lanzarTostada("Fin de la compra. Valor: $" + total + ". Gracias por su compra.", 2000);
+  lanzarTostada(
+    "Fin de la compra. Valor: $" + total + ". Gracias por su compra.",
+    2000
+  );
 }
 
 function lanzarTostada(text, duration) {
-  Toastify({
-    text,
-    duration
-  }).showToast();
+  Toastify({ text, duration }).showToast();
 }
